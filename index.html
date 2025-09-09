@@ -530,6 +530,11 @@
 
 
 
+  img {
+    pointer-events: none;       /* يمنع الكليك يمين / سحب */
+    -webkit-user-drag: none;    /* يمنع السحب */
+    /* user-drag: none; */
+  }
 
 
 
@@ -713,9 +718,99 @@
                 transform: scale(1);
             }
         }
+
+
+/* Services Section */
+.services {
+  padding: 80px 0;
+  background: var(--primary);
+}
+
+.services .section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--light);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: var(--dark);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(138, 43, 226, 0.2); /* بنفسجي شفاف */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.service-card i {
+  font-size: 2.8rem;
+  color: var(--secondary); /* Violet */
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--light);
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  background: linear-gradient(135deg, var(--dark), rgba(138, 43, 226, 0.15));
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
+  border: 1px solid var(--secondary);
+
+}
+
+   #screenshotBlocker {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
     </style>
 </head>
-<body data-theme="dark">
+<body data-theme="dark"
+
+
+  oncontextmenu="event.preventDefault();alert('🚫 ممنوع حفظ أو نسخ الصور');"
+  ondragstart="event.preventDefault();"
+  onkeydown="if(
+     (event.ctrlKey && event.key==='s') || 
+     (event.ctrlKey && event.key==='u') || 
+     (event.ctrlKey && event.shiftKey && event.key==='I') || 
+     (event.key==='PrintScreen')
+    //  (event.key==='F12')
+   ){
+     event.preventDefault();
+     alert('🚫 ممنوع تصوير الشاشة أو حفظ الصور');
+   }"
+
+oncontextmenu="event.preventDefault();" 
+  ondragstart="event.preventDefault();">
+>
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -732,6 +827,7 @@
                     <li><a href="#hero" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Service</a></li>
                     <li><a href="#certificates">Certificates</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><button class="theme-toggle toggle-theme">🌓</button></li>
@@ -778,7 +874,7 @@
                     
                     <p>I'm Samah Mohamed , a passionate software developer dedicated to creating digital experiences that are both visually engaging and technically strong. ✨</p>  
                     <p>My journey started with a love for coding and problem-solving, which naturally grew into building modern front-end interfaces and full-stack web applications that work seamlessly.</p>  
-                    <p>I specialize in *Front-end* and *Full-stack development, with a strong interest in **UI/UX design*, ensuring that every project I work on is not only functional but also user-friendly and aesthetically pleasing.</p>  
+                    <p>I specialize in Front-end and Full-stack development, with a strong interest in UI/UX design, ensuring that every project I work on is not only functional but also user-friendly and aesthetically pleasing.</p>  
                     <p>Beyond coding, I enjoy exploring new technologies, working on personal projects, and sharing knowledge with others.</p>
                     <h3>My Skills</h3>
                     <div class="skills-container">
@@ -818,14 +914,14 @@
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/78042a98-3b45-400b-9432-0f6332530d4e.png" alt="Dashboard application interface with violet theme showing analytics data visualization">
+                        <img src="Screenshot 2025-09-10 015002.png" alt="Dashboard application interface with violet theme showing analytics data visualization">
                     </div>
                     <div class="project-info">
                         <h3>Analytics Dashboard</h3>
                         <p>A modern analytics dashboard with real-time data visualization and custom reporting features.</p>
                         <div class="project-links">
-                            <a href="#">Live Demo</a>
-                            <a href="#">Code</a>
+                            <a href="https://samahcodes.github.io/Analytic-dashboard/">Live Demo</a>
+                            <a href="https://github.com/SamahCodes/Analytic-dashboard">Code</a>
                         </div>
                     </div>
                 </div>
@@ -848,20 +944,20 @@
                 <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/15ca4852-c6eb-49f6-b389-7fc9892b706f.png" alt="Social media application interface with violet branding showing user profile and posts">
+                        <img src="lll.png" alt="Social media application interface with violet branding showing user profile and posts">
                     </div>
                     <div class="project-info">
-                        <h3>Social Network</h3>
-                        <p>A social networking application with real-time updates, chat functionality, and personalized feeds.</p>
+                        <h3>landing-page/h3>
+                        <p>Building high-converting landing pages tailored for businesses, products, or campaigns.</p>
                         <div class="project-links">
-                            <a href="#">Live Demo</a>
-                            <a href="#">Code</a>
+                            <a href=" https://samahcodes.github.io/landing-page/">Live Demo</a>
+                            <a href="https://github.com/SamahCodes/landing-page">Code</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 4 -->
-                <div class="project-card">
+                <!-- <div class="project-card">
                     <div class="project-image">
                         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f05b870d-c005-48e3-abea-2b5b40a07cf5.png" alt="Portfolio website examples showing various layouts with black and violet themes">
                     </div>
@@ -873,11 +969,69 @@
                             <a href="#">Code</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
 
+
+    <!-- Services Section -->
+<section id="services" class="services">
+  <div class="container">
+    <h2 class="section-title">My Services</h2>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <i class="fas fa-laptop-code"></i>
+        <h3>UI Development</h3>
+        <p>Converting designs into interactive web pages using HTML, CSS, and JavaScript.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-globe"></i>
+        <h3>Full Website Development</h3>
+        <p>Building complete websites (portfolio, business, or personal sites) from scratch.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-bolt"></i>
+        <h3>Performance Optimization</h3>
+        <p>Enhancing website speed and overall user experience.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Responsive Design</h3>
+        <p>Ensuring seamless display across mobile, tablet, and desktop devices.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-tools"></i>
+        <h3>Bug Fixing & Debugging</h3>
+        <p>Fixing code issues and design problems in existing websites.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-link"></i>
+        <h3>API Integration</h3>
+        <p>Connecting websites with external services such as databases or payment gateways.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-rocket"></i>
+        <h3>Landing Page Development</h3>
+        <p>Building high-converting landing pages tailored for businesses, products, or campaigns.</p>
+      </div>
+
+        <div class="service-card">
+        <i class="fas fa-rocket"></i>
+        <h3>Deployment & Hosting Setup</h3>
+        <p>Deploying websites and configuring domains (Netlify, Vercel, GitHub Pages).</p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <section class="certificates" id="certificates">
   <h2 class="section-title">My Certificates</h2>
@@ -906,7 +1060,6 @@
         <p>Year: 2025</p>
       </div>
     </div>
-    <!-- Hidden certificates -->
     <div class="certificate-card hidden">
       <img src="WhatsApp Image 2025-04-22 at 18.14.01_90f913ca.jpg" alt="Certificate 4" />
       <div class="certificate-info">
@@ -915,7 +1068,6 @@
         <p>Year: 2025</p>
       </div>
     </div>
-    <!-- Add more hidden cards as needed -->
   </div>
   <button id="toggleCertificates" class="btn btn-primary">Show More</button>
 </section>
@@ -956,15 +1108,7 @@
                     </div>
                 </div>
                 
-                <!-- <form action="https://formspree.io/f/xjkepdlj"  method="POST" class="contact-form" id="contactForm" >
-                    <input name="name" type="text" placeholder="Your Name" required>
-                    <input name="email" type="email" placeholder="Your Email" required>
-                    <input name="subject" type="text" placeholder="Subject">
-                    <textarea name="message"  rows="5" placeholder="Your Message" required></textarea>
-                    <button   name="submit"  type="submit" class="btn btn-primary">Send Message</button><br><br>
-                      <button name="subwats" type="button"  onclick="sendToWhatsApp()"  class="btn btn-primary">Send via WhatsApp</button>
-
-                </form> -->
+              
 
                 <form action="https://formspree.io/f/xjkepdlj" method="POST" class="contact-form" id="contactForm">
                     <input id="namee" name="name" type="text" placeholder="Your Name" required>
@@ -972,10 +1116,10 @@
                     <input id="subject" name="subject" type="text" placeholder="Subject">
                     <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
                     
-                    <!-- زرار الإرسال العادي -->
-                    <button type="submit" class="btn btn-primary">Send Message</button><br><br>
+                   
+                    <button type="submit" class="btn btn-primary">Send an email</button><br><br>
                     
-                    <!-- زرار واتساب -->
+                  
                     <button type="button" onclick="sendToWhatsApp()" class="btn btn-primary">
                       Send via WhatsApp
                     </button>
@@ -990,47 +1134,74 @@
     <footer>
         <div class="container footer-content">
             <p>&copy; <span class="year">2025</span> My Portfolio. All rights reserved.</p>
-            <p>Designed $ created by samah mohamed </p>
+            <p>Designed & created by samah mohamed </p>
         </div>
     </footer>
 
     
+  <div id="screenshotBlocker">🚫 ممنوع تصوير الشاشة</div>
     <script>
 
- function sendToWhatsApp() {
+
+//   // منع PrintScreen ومسح الكليب بورد
+//   document.addEventListener("keyup", function(e) {
+//     if (e.key === "PrintScreen") {
+//       navigator.clipboard.writeText(""); 
+//       alert("🚫 تصوير الشاشة مش مسموح هنا!");
+//     }
+//   });
+
+     // اكتشاف PrintScreen
+    document.addEventListener("keyup", function(e) {
+      if (e.key === "PrintScreen") {
+        document.getElementById("screenshotBlocker").style.display = "flex";
+        setTimeout(() => {
+          document.getElementById("screenshotBlocker").style.display = "none";
+        }, 3000); // يختفي بعد 3 ثواني
+      }
+    });
+
+    // محاولة إضافية لمسح أي صورة من الـ clipboard
+    document.addEventListener("keyup", function(e) {
+      if (e.key === "PrintScreen") {
+        navigator.clipboard.writeText("");
+      }
+    });
+ 
+
+//   // منع F12 أو DevTools
+//   (function() {
+//     let devtools = function() {};
+//     devtools.toString = function() {
+//       alert("🚫 ممنوع فتح أدوات المطور!");
+//       return "";
+//     };
+//     console.log("%c", devtools);
+//   })();
+
+
+function sendToWhatsApp() {
     let namee = document.getElementById("namee").value;
     let email = document.getElementById("email").value;
     let subject = document.getElementById("subject").value;
     let message = document.getElementById("message").value;
 
-    let phone = "201025142612"; // رقمك بكود الدولة بدون +
+    let phone = "201025142612"; 
 
-    // النص كله بين backticks
-    let text = "Name: ${namee}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}";
+    
+    let text =`Name: ${namee}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}`;
 
-    // كشف الجهاز (موبايل أو كمبيوتر)
-    let isMobile =" /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)";
+    let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     let url;
     if (isMobile) {
-        url =" https://wa.me/${phone}?text=${text}";  // يفتح واتساب موبايل
+        url =`https://wa.me/${phone}?text=${text}`;  
     } else {
-        url =" https://web.whatsapp.com/send?phone=${phone}&text=${text}"; // يفتح واتساب ويب
+        url =`https://web.whatsapp.com/send?phone=${phone}&text=${text}`; 
     }
 
-    let win = window.open(url, "_blank");
-    if (win) {
-        win.focus();
-    }
+    window.open(url, "_blank");
 }
-        // Page load animation
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease';
-                document.body.style.opacity = '1';
-            }, 100);
-        });
 
         // Mobile Menu Toggle
         const menuBtn = document.querySelector('.menu-btn');
