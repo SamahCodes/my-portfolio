@@ -95,6 +95,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            /* display: flex; */
+            
         }
 
         section {
@@ -119,7 +121,7 @@
 
         .header-container {
             display: flex;
-            justify-content: space-between;
+            justify-content:space-between;
             align-items: center;
             padding: 1.5rem 0;
         }
@@ -790,6 +792,111 @@
       justify-content: center;
       z-index: 9999;
     }
+/* Section *//* Section */
+.testimonial-section {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+/* Outer slider */
+.testimonial-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Container: hides overflow */
+.slides-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Wrapper: row of slides */
+.slides-wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Each slide = full container width */
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Card styling */
+.testimonial-card {
+  background: var(--primary);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  max-width: 500px;
+  width: 100%;
+
+    border-radius: 12px;
+  border: 1px solid rgba(137, 43, 226, 0.458); /* بنفسجي شفاف */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  background: linear-gradient(135deg, var(--dark), rgba(138, 43, 226, 0.15));
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
+  border: 1px solid var(--secondary);
+
+}
+/* Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background:rgba(137, 43, 226, 0.448);
+
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.3rem 0.8rem;
+  border-radius: 40%;
+  box-shadow: var(--primary);
+  z-index: 10;
+}
+
+.left-btn { left: -2.5rem; }
+.right-btn { right: -2.5rem; }
+
+
+/* ✅ Responsive adjustments */
+@media (max-width: 768px) {
+  .slider-btn {
+    font-size: 1.3rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .left-btn {
+    left: 0.5rem;
+  }
+  .right-btn {
+    right: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-btn {
+    font-size: 1.1rem;
+    padding: 0.3rem 0.5rem;
+  }
+  .left-btn {
+    left: 0.3rem;
+  }
+  .right-btn {
+    right: 0.3rem;
+  }
+}
+
     </style>
 </head>
 <body data-theme="dark"
@@ -876,6 +983,10 @@ oncontextmenu="event.preventDefault();"
                     <p>My journey started with a love for coding and problem-solving, which naturally grew into building modern front-end interfaces and full-stack web applications that work seamlessly.</p>  
                     <p>I specialize in Front-end and Full-stack development, with a strong interest in UI/UX design, ensuring that every project I work on is not only functional but also user-friendly and aesthetically pleasing.</p>  
                     <p>Beyond coding, I enjoy exploring new technologies, working on personal projects, and sharing knowledge with others.</p>
+                  
+                   
+                   <!-- <h3>Education</h3>   
+                   <p> Mansoura University<br> Faculity of information and computer science</p> -->
                     <h3>My Skills</h3>
                     <div class="skills-container">
                         <span class="skill">HTML5</span>
@@ -1033,6 +1144,7 @@ oncontextmenu="event.preventDefault();"
   </div>
 </section>
 
+<!-- certificates -->
 <section class="certificates" id="certificates">
   <h2 class="section-title">My Certificates</h2>
   <div class="certificates-grid">
@@ -1044,19 +1156,30 @@ oncontextmenu="event.preventDefault();"
         <p>Year: 2025</p>
       </div>
     </div>
+    <!-- ------------------ -->
     <div class="certificate-card">
-      <img src="Screenshot 2025-08-07 010637.png" alt="Certificate 2" />
+      <img src="Screenshot 2025-09-22 175831.png" alt="Certificate 2" />
       <div class="certificate-info">
-        <h3>ui / ux</h3>
-        <p>Issued by  Sprints</p>
+        <h3>Full-Stack php</h3>
+        <p>Issued by  NTI</p>
         <p>Year: 2025</p>
       </div>
     </div>
+<!-- ------------------------ -->
+    
     <div class="certificate-card">
       <img src="Screenshot 2025-08-15 232644.png" alt="Certificate 3" />
       <div class="certificate-info">
         <h3>JavaScript</h3>
         <p>Issued by Maharatech</p>
+        <p>Year: 2025</p>
+      </div>
+    </div>
+    <div class="certificate-card">
+      <img src="Screenshot 2025-08-07 010637.png" alt="Certificate 2" />
+      <div class="certificate-info">
+        <h3>ui / ux</h3>
+        <p>Issued by  Sprints</p>
         <p>Year: 2025</p>
       </div>
     </div>
@@ -1068,9 +1191,74 @@ oncontextmenu="event.preventDefault();"
         <p>Year: 2025</p>
       </div>
     </div>
+    
   </div>
   <button id="toggleCertificates" class="btn btn-primary">Show More</button>
 </section>
+<section id="testimonials" class="testimonial-section">
+  <h2>What People Say</h2>
+  <div class="testimonial-slider">
+    <button class="slider-btn left-btn" aria-label="Previous testimonial">&#10094;</button>
+    <div class="slides-wrapper">
+      <div class="slide">
+        <div class="testimonial-card">
+          <p>“I would like to thank you for the great effort and dedication you showed as our team leader. You were always committed, organized, and proactive in solving problems for everyone in the group. You successfully completed all your assigned tasks in the best possible way and, at the same time, supported your teammates whenever they needed help. Your leadership, responsibility, and teamwork skills truly made a positive difference, and I really appreciate your hard work and contribution 🌸🙏”</p>
+          <h4>ENG: Hosam</h4>
+          <!-- <span>CEO, Company</span> -->
+        </div>
+      </div>
+      <!-- <div class="slide">
+        <div class="testimonial-card">
+          <p>“Very professional, delivered on time with great quality.”</p>
+          <h4>Client Two</h4>
+          <span>Freelancer</span>
+        </div>
+      </div> -->
+      <div class="slide">
+        <div class="testimonial-card">
+          <p>“سماح اشطر حد ف التريننج و اكتر حد مجتهد و problem solver 
+بالتوفيق ديما♥♥”</p>
+          <h4>DR.Hams radwan</h4>
+          <!-- <span>instructor</span> -->
+        </div>
+      </div>
+    </div>
+    <button class="slider-btn right-btn" aria-label="Next testimonial">&#10095;</button>
+  </div>
+</section>
+
+
+
+
+<!-- <script>
+  const slider = document.getElementById("testimonial-slider");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+  const totalSlides = slider.children.length;
+  let index = 0;
+
+  function showSlide(i) {
+    slider.style.transform = `translateX(-${i * 100}%)`;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    index = (index - 1 + totalSlides) % totalSlides;
+    showSlide(index);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % totalSlides;
+    showSlide(index);
+  });
+
+  // Initialize
+  showSlide(index);
+</script> -->
+
+
+
+
+
 
 
 
@@ -1179,7 +1367,34 @@ oncontextmenu="event.preventDefault();"
 //     console.log("%c", devtools);
 //   })();
 
+//testimon
 
+
+  // Other JS code here (menu, dark mode, etc.)
+
+  // Testimonials logic
+  const slider = document.getElementById("testimonial-slider");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+
+  if (slider && prevBtn && nextBtn) {
+    let index = 0;
+
+    nextBtn.addEventListener("click", () => {
+      index++;
+      slider.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    prevBtn.addEventListener("click", () => {
+      index = Math.max(0, index - 1);
+      slider.style.transform = `translateX(-${index * 100}%)`;
+    });
+  }
+
+  // More JS can continue safely below...
+
+
+//-------------------------------------------------------
 function sendToWhatsApp() {
     let namee = document.getElementById("namee").value;
     let email = document.getElementById("email").value;
@@ -1327,18 +1542,70 @@ function sendToWhatsApp() {
         });
 
      
+// const toggleBtn = document.getElementById('toggleCertificates');
+// const hiddenCards = document.querySelectorAll('.certificate-card.hidden');
+
+// toggleBtn.addEventListener('click', () => {
+//   const isHidden = hiddenCards[0].style.display === 'none' || hiddenCards[0].style.display === '';
+
+//   hiddenCards.forEach(card => {
+//     card.style.display = isHidden ? 'block' : 'none';
+//   });
+
+//   toggleBtn.textContent = isHidden ? 'Show Less' : 'Show More';
+// });
+
 const toggleBtn = document.getElementById('toggleCertificates');
-const hiddenCards = document.querySelectorAll('.certificate-card.hidden');
+const allCards = document.querySelectorAll('.certificate-card');
+
+const VISIBLE_COUNT = 3; // always keep 3 visible
+
+// Hide everything after the first 3 on load
+allCards.forEach((card, index) => {
+  if (index >= VISIBLE_COUNT) {
+    card.style.display = 'none';
+  }
+});
 
 toggleBtn.addEventListener('click', () => {
-  const isHidden = hiddenCards[0].style.display === 'none' || hiddenCards[0].style.display === '';
+  const isExpanded = toggleBtn.textContent === 'Show Less';
 
-  hiddenCards.forEach(card => {
-    card.style.display = isHidden ? 'block' : 'none';
+  allCards.forEach((card, index) => {
+    if (index >= VISIBLE_COUNT) {
+      card.style.display = isExpanded ? 'none' : 'block';
+    }
   });
 
-  toggleBtn.textContent = isHidden ? 'Show Less' : 'Show More';
+  toggleBtn.textContent = isExpanded ? 'Show More' : 'Show Less';
 });
+
+
+
+(function() {
+  const slidesWrapper = document.querySelector('.slides-wrapper');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const prevBtn = document.querySelector('.left-btn');
+  const nextBtn = document.querySelector('.right-btn');
+  let currentIndex = 0;
+
+  function updateSlidePosition() {
+    const offset = -currentIndex * 100; // shift by 100% per slide
+    slidesWrapper.style.transform = `translateX(${offset}%)`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+    updateSlidePosition();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+    updateSlidePosition();
+  });
+
+  // initialize
+  updateSlidePosition();
+})();
 
 
     </script>
